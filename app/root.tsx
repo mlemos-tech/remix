@@ -1,26 +1,17 @@
-import { json, type LinksFunction } from "@remix-run/node";
-import { List } from "./service/list";
-
+import { type LinksFunction } from "@remix-run/node";
 import appStylesHref from "./app.css";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: appStylesHref },
 ];
 
-// export const loader = async() => {
-//   const users = List(0)
-//   return json({users})
-// }
-
 import {
-  Form,
   Links,
   LiveReload,
   Meta,
   Scripts,
   Outlet,
-  ScrollRestoration,
-  useLoaderData  
+  ScrollRestoration
 } from "@remix-run/react";
 
 export default function App() {

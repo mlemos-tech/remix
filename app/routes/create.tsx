@@ -1,7 +1,9 @@
 import React from 'react'
 import { Form } from "@remix-run/react";
 import { Create } from '~/service/list';
-import { useNavigate } from "react-router-dom";
+import InputMask from 'react-input-mask';
+import Swal from 'sweetalert2';
+
 
 export default class UserManager extends React.Component {
 
@@ -9,9 +11,8 @@ export default class UserManager extends React.Component {
         super(props)
     }
 
-    submit(e: any) {        
+    submit(e: any, w: any) {        
         e.preventDefault()
-        
         const name = e.currentTarget[0].value
         const email = e.currentTarget[1].value
         const birthday = e.currentTarget[2].value
@@ -20,29 +21,51 @@ export default class UserManager extends React.Component {
             name,
             email,
             birthday
-        }).then(req => {
-            useNavigate()('/users')
-        })
+        }).then(
+            req => {
+                w.location.href = "/"
+            },
+            err => {
+                const data = err.response.data
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: data.error
+                })
+            }
+        )
     }
 
     render() {
         const _self = this
-
         return (
             <section>
                 <cite>
                     <h1>Create a new user</h1>
-                    <a href="#">Back</a>
+                    <a href="/users">Back</a>
                 </cite>
 
                 <div>
-                    <Form onSubmit={_self.submit} method='post'>
+                    <Form onSubmit={(e) =>_self.submit(e, window)} method='post'>
 
-                        <input type="text" name='name' placeholder='Name' />
-                        <input type="email" name='email' placeholder='Email' />
-                        <input type="birthday" name='birthday' placeholder='Birthday' />
+                        <div>
+                            <label htmlFor="">Name</label>
+                            <input type="text" name='name' placeholder='Name' />
+                        </div>
+                        
+                        <div>
+                            <label htmlFor="">E-mail</label>
+                            <input type="email" name='email' placeholder='Email' />
+                        </div>
 
-                        <button>Create</button>
+                        <div>
+                            <label htmlFor="">Birthday</label>
+                            <InputMask mask="99/99/9999">
+                                {/* {} */}
+                            </InputMask>
+                        </div>
+
+                        <button className='btn primary'>Save</button>
 
                     </Form>
                 </div>

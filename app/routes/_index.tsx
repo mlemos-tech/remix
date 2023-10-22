@@ -18,11 +18,8 @@ export default class Users extends React.Component {
     }
     
     constructor(props: any) {
-        super(props) 
-    }
-    
-    componentWillMount(): void {        
-       this.toList(this.state.page)
+        super(props)        
+        this.toList(this.state.page)
     }
 
     edit(e: any, user: any) {
@@ -137,7 +134,7 @@ export default class Users extends React.Component {
                     )}
                 </table>
 
-                {(true) ? (
+                {(users.NumOfPage > 1) ? (
 
                     <div id="paginate">
                         <ul>

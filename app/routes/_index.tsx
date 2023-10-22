@@ -137,11 +137,11 @@ export default class Users extends React.Component {
                     )}
                 </table>
 
-                {(users.NumOfPage > 1) ? (
+                {(true) ? (
 
                     <div id="paginate">
                         <ul>
-                            <li><a className="prev" href="#" onClick={e => _self.toPage(e, _page + 1)}>Prev</a></li>
+                            <li><a className="prev" href="#" onClick={e => _self.toPage(e, _page)}>Prev</a></li>
                             {links.map(l => (<li key={l}><a href="#" className="num" onClick={e => _self.toPage(e, l)}>{l}</a></li>))}
                             <li><a className="next" href="#" onClick={e => _self.toPage(e, _page + 2)}>Next</a></li>
                         </ul>

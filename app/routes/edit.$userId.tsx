@@ -55,7 +55,7 @@ export default function Edit() {
         <section>
             <cite>
                 <h1>Edit User</h1>
-                <a href="/users">Back</a>
+                <a href="/">Back</a>
             </cite>
 
             <div>

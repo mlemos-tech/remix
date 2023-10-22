@@ -8,6 +8,8 @@ RUN npm i
 
 EXPOSE 3000
 
+RUN chmod +x ./entrypoint.sh
+
 ENTRYPOINT [ "./entrypoint.sh" ]
 
 CMD [ "./node_modules/.bin/pm2", "logs" ]

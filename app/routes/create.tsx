@@ -42,7 +42,7 @@ export default class UserManager extends React.Component {
             <section>
                 <cite>
                     <h1>Create a new user</h1>
-                    <a href="/users">Back</a>
+                    <a href="/">Back</a>
                 </cite>
 
                 <div>
@@ -50,12 +50,12 @@ export default class UserManager extends React.Component {
 
                         <div>
                             <label htmlFor="">Name</label>
-                            <input type="text" name='name' placeholder='Name' />
+                            <input type="text" name='name' placeholder='Name' required />
                         </div>
                         
                         <div>
                             <label htmlFor="">E-mail</label>
-                            <input type="email" name='email' placeholder='Email' />
+                            <input type="email" name='email' placeholder='Email' required />
                         </div>
 
                         <div>
